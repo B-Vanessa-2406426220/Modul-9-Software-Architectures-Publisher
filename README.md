@@ -9,4 +9,9 @@ Dalam satu kali eksekusi, program publisher ini akan mengirimkan 5 pesan (events
 Penggunaan URL amqp://guest:guest@localhost:5672 yang sama persis pada publisher dan subscriber adalah syarat agar komunikasi asinkron ini berhasil. Dalam arsitektur message queuing, pengirim dan penerima pesan bekerja secara terpisah dan tidak saling berinteraksi secara langsung. Oleh karena itu, URL tersebut berfungsi sebagai titik temu terpusat yang disepakati oleh kedua program. Alamat ini memastikan keduanya terhubung ke server RabbitMQ lokal yang sama melalui port standar 5672. Publisher menggunakan alamat ini sebagai tempat tujuan untuk menitipkan pesan-pesannya ke dalam antrean broker. Sebagai pasangannya, subscriber wajib memantau alamat yang sama persis agar bisa mengambil pesan yang telah dititipkan tersebut. Jika URL-nya sedikit saja berbeda, pesan dari publisher hanya akan menumpuk di antrean broker karena subscriber memantau di tempat yang salah.
 
 ## Running RabbitMQ
-![/running-RabbitMQ](./assets/running-RabbitMQ.jpg)
+![/running-RabbitMQ](./assets/running-RabbitMQ.png)
+
+## Sending and Processing Event
+![/console](./assets/console.png)
+
+Tahap ini mendemonstrasikan sistem messaging menggunakan RabbitMQ. Ketika menjalankan cargo run pada direktori publisher, sistem akan mengirimkan 5 event ke message broker. Event-event tersebut kemudian diterima dan diproses secara langsung oleh subscriber. Seperti yang terlihat pada tangkapan layar, publisher(sisi kanan) berhasil mengirimkan data dan subscriber(sisi kiri) berhasil menampilkan informasi tersebut di konsol, yang menandakan bahwa aliran data melalui RabbitMQ telah berhasil dikonfigurasi.
