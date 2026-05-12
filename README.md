@@ -7,3 +7,6 @@ Dalam satu kali eksekusi, program publisher ini akan mengirimkan 5 pesan (events
 > The url of: "amqp://guest:guest@localhost:5672" is the same as in the subscriber program, what does it mean?
 
 Penggunaan URL amqp://guest:guest@localhost:5672 yang sama persis pada publisher dan subscriber adalah syarat agar komunikasi asinkron ini berhasil. Dalam arsitektur message queuing, pengirim dan penerima pesan bekerja secara terpisah dan tidak saling berinteraksi secara langsung. Oleh karena itu, URL tersebut berfungsi sebagai titik temu terpusat yang disepakati oleh kedua program. Alamat ini memastikan keduanya terhubung ke server RabbitMQ lokal yang sama melalui port standar 5672. Publisher menggunakan alamat ini sebagai tempat tujuan untuk menitipkan pesan-pesannya ke dalam antrean broker. Sebagai pasangannya, subscriber wajib memantau alamat yang sama persis agar bisa mengambil pesan yang telah dititipkan tersebut. Jika URL-nya sedikit saja berbeda, pesan dari publisher hanya akan menumpuk di antrean broker karena subscriber memantau di tempat yang salah.
+
+## Running RabbitMQ
+![/running-RabbitMQ](./assets/running-RabbitMQ.jpg)
