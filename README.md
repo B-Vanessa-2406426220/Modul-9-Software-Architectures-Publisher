@@ -15,3 +15,9 @@ Penggunaan URL amqp://guest:guest@localhost:5672 yang sama persis pada publisher
 ![/console](./assets/console.png)
 
 Tahap ini mendemonstrasikan sistem messaging menggunakan RabbitMQ. Ketika menjalankan cargo run pada direktori publisher, sistem akan mengirimkan 5 event ke message broker. Event-event tersebut kemudian diterima dan diproses secara langsung oleh subscriber. Seperti yang terlihat pada tangkapan layar, publisher(sisi kanan) berhasil mengirimkan data dan subscriber(sisi kiri) berhasil menampilkan informasi tersebut di konsol, yang menandakan bahwa aliran data melalui RabbitMQ telah berhasil dikonfigurasi.
+
+## Monitoring Chart Based on Publisher
+
+![/spike-RabbitMQ](./assets/spike.png)
+
+Gambar di atas menunjukkan statistik pada dashboard RabbitMQ saat program publisher dijalankan berulang kali. Terlihat lonjakan (spikes) pada grafik Message Rates yang menandakan adanya aktivitas pengiriman pesan ke broker. Karena program subscriber juga sedang aktif, lonjakan pada grafik Consumer Ack (warna ungu) muncul bersamaan, yang menunjukkan bahwa pesan langsung diterima, diproses, dan dikonfirmasi oleh subscriber tanpa adanya penumpukan dalam antrean (queue).
